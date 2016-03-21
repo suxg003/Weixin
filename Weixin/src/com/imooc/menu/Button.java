@@ -5,6 +5,15 @@ public class Button {
 	private String type;
 	//菜单名称
 	private String name;
+	
+	private String key;
+	
+	public String getKey() {
+		return key;
+	}
+	public void setKey(String key) {
+		this.key = key;
+	}
 	//二级菜单
 	private Button[] sub_button;
 	public String getType() {

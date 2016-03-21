@@ -237,11 +237,11 @@ public class WeixinUtil {
 		button32.setType("location_select");
 		button32.setKey("32");
 		
-		Button button = new Button();
+		/*Button button = new Button();
 		button.setName("²Ëµ¥");
-		button.setSub_button(new Button[]{button31,button32});
+		button.setSub_button(new Button[]{button31,button32});*/
 		
-		menu.setButton(new Button[]{button11,button21,button});
+		menu.setButton(new Button[]{button11,button21});
 		return menu;
 	}
 	
