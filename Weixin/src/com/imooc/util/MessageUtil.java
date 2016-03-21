@@ -17,6 +17,7 @@ import org.dom4j.io.SAXReader;
 
 import com.imooc.po.Image;
 import com.imooc.po.ImageMessage;
+import com.imooc.po.LinkMessage;
 import com.imooc.po.Music;
 import com.imooc.po.MusicMessage;
 import com.imooc.po.News;
@@ -81,6 +82,20 @@ public class MessageUtil {
 		return xstream.toXML(textMessage);
 	}
 	
+	public static String LinkMessageToXml(LinkMessage textMessage){
+		XStream xstream = new XStream();
+		xstream.alias("xml", textMessage.getClass());
+		return xstream.toXML(textMessage);
+	}
+	
+	
+	public static <T> String objectToXml(T object){
+		XStream xstream = new XStream();
+		xstream.alias("xml", object.getClass());
+		return xstream.toXML(object);
+	}
+	
+	
 	/**
 	 * 组装文本消息
 	 * @param toUserName
@@ -98,6 +113,19 @@ public class MessageUtil {
 		return textMessageToXml(text);
 	}
 	
+	public static String initText(String toUserName,String fromUserName,String title,String msgType,String description,String url,String msgId){
+		LinkMessage text = new LinkMessage();
+		text.setFromUserName(toUserName);
+		text.setToUserName(fromUserName);
+		text.setMsgType(msgType);
+		text.setCreateTime(new Date().getTime());
+		text.setTitle(title);
+		text.setDescription(description);
+		text.setUrl(url);
+		text.setMsgId(msgId);
+		return LinkMessageToXml(text);
+	}
+	
 	/**
 	 * 主菜单
 	 * @return
@@ -106,7 +134,7 @@ public class MessageUtil {
 		StringBuffer sb = new StringBuffer();
 		sb.append("欢迎您的关注，请按照菜单提示进行操作：\n\n");
 		sb.append("1、课程介绍\n");
-		sb.append("2、慕课网介绍\n");
+		sb.append("2、      介绍\n");
 		sb.append("3、词组翻译\n\n");
 		sb.append("回复？调出此菜单。");
 		return sb.toString();
@@ -114,14 +142,14 @@ public class MessageUtil {
 	
 	public static String firstMenu(){
 		StringBuffer sb = new StringBuffer();
-		sb.append("本套课程介绍微信公众号开发，主要涉及公众号介绍、编辑模式介绍、开发模式介绍等");
+		sb.append("微信公众号开发，主要涉及公众号介绍、编辑模式介绍、开发模式介绍等");
 		return sb.toString();
 	}
 	
 	public static String secondMenu(){
 		StringBuffer sb = new StringBuffer();
-		sb.append("慕课网是垂直的互联网IT技能免费学习网站。以独家视频教程、在线编程工具、学习计划、问答社区为核心特色。在这里，你可以找到最好的互联网技术牛人，也可以通过免费的在线公开视频课程学习国内领先的互联网IT技术。");
-		sb.append("慕课网课程涵盖前端开发、PHP、Html5、Android、iOS、Swift等IT前沿技术语言，包括基础课程、实用案例、高级分享三大类型，适合不同阶段的学习人群。以纯干货、短视频的形式为平台特点，为在校学生、职场白领提供了一个迅速提升技能、共同分享进步的学习平台。");
+		sb.append("      是垂直的互联网IT技能免费学习网站。以独家视频教程、在线编程工具、学习计划、问答社区为核心特色。在这里，你可以找到最好的互联网技术牛人，也可以通过免费的在线公开视频课程学习国内领先的互联网IT技术。");
+		sb.append("      课程涵盖前端开发、PHP、Html5、Android、iOS、Swift等IT前沿技术语言，包括基础课程、实用案例、高级分享三大类型，适合不同阶段的学习人群。以纯干货、短视频的形式为平台特点，为在校学生、职场白领提供了一个迅速提升技能、共同分享进步的学习平台。");
 		return sb.toString();
 	}
 	
@@ -180,8 +208,8 @@ public class MessageUtil {
 		NewsMessage newsMessage = new NewsMessage();
 		
 		News news = new News();
-		news.setTitle("慕课网介绍");
-		news.setDescription("慕课网是垂直的互联网IT技能免费学习网站。以独家视频教程、在线编程工具、学习计划、问答社区为核心特色。在这里，你可以找到最好的互联网技术牛人，也可以通过免费的在线公开视频课程学习国内领先的互联网IT技术。慕课网课程涵盖前端开发、PHP、Html5、Android、iOS、Swift等IT前沿技术语言，包括基础课程、实用案例、高级分享三大类型，适合不同阶段的学习人群。");
+		news.setTitle("介绍");
+		news.setDescription(" 垂直的互联网IT技能免费学习网站。以独家视频教程、在线编程工具、学习计划、问答社区为核心特色。在这里，你可以找到最好的互联网技术牛人，也可以通过免费的在线公开视频课程学习国内领先的互联网IT技术。      课程涵盖前端开发、PHP、Html5、Android、iOS、Swift等IT前沿技术语言，包括基础课程、实用案例、高级分享三大类型，适合不同阶段的学习人群。");
 		news.setPicUrl("http://zapper.tunnel.mobi/Weixin/image/imooc.jpg");
 		news.setUrl("www.imooc.com");
 		
@@ -241,5 +269,9 @@ public class MessageUtil {
 		musicMessage.setMusic(music);
 		message = musicMessageToXml(musicMessage);
 		return message;
+	}
+	
+	public static void main(String[] args) {
+		System.out.println(MessageUtil.initMusicMessage("123","456"));
 	}
 }

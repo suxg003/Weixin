@@ -44,8 +44,8 @@ import com.imooc.trans.TransResult;
  *
  */
 public class WeixinUtil {
-	private static final String APPID = "wxdd76438574cc239e";
-	private static final String APPSECRET = "8fb4f41bd36156e171631d371750b519";
+	private static final String APPID = "wx7963ecdc9e301591";
+	private static final String APPSECRET = "bf3b5b322d37bd15dc06ee963a0d3e30";
 	
 	private static final String ACCESS_TOKEN_URL = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";
 	

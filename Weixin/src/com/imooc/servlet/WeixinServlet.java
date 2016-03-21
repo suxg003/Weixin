@@ -54,6 +54,11 @@ public class WeixinServlet extends HttpServlet {
 			
 			String message = null;
 			if(MessageUtil.MESSAGE_TEXT.equals(msgType)){
+				if("11".equals(content)){
+//					message = MessageUtil.initText(toUserName, fromUserName, MessageUtil.firstMenu());
+					message = MessageUtil.initText(toUserName, fromUserName, "这是测试title",MessageUtil.MESSAGE_LINK,"这是测试描述","http://www.baidu.com","1");
+				}
+				else
 				if("1".equals(content)){
 					message = MessageUtil.initText(toUserName, fromUserName, MessageUtil.firstMenu());
 				}else if("2".equals(content)){
@@ -86,7 +91,19 @@ public class WeixinServlet extends HttpServlet {
 			}else if(MessageUtil.MESSAGE_LOCATION.equals(msgType)){
 				String label = map.get("Label");
 				message = MessageUtil.initText(toUserName, fromUserName, label);
+			}else if(MessageUtil.MESSAGE_LINK.equals(msgType)){
+				 
+				String title= map.get("Title");
+				String description =map.get("Description");
+				String url=map.get("Url");
+				String MsgId=map.get("MsgId");
+				System.out.println("参数title="+title);
+				System.out.println("参数description="+description);
+				System.out.println("参数url="+url);
+				System.out.println("参数MsgId="+MsgId);
+				message = MessageUtil.initText(toUserName, fromUserName, title,msgType,description,url,MsgId);
 			}
+			
 			
 			System.out.println(message);
 			

@@ -2,7 +2,7 @@
     <wb-module deploy-name="Weixin">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="Weixin"/>
         <property name="java-output-path" value="/Weixin/build/classes"/>
+        <property name="context-root" value="jeewx"/>
     </wb-module>
 </project-modules>
