@@ -113,7 +113,11 @@ public class MessageUtil {
 		return textMessageToXml(text);
 	}
 	
-	public static String initText(String toUserName,String fromUserName,String title,String msgType,String description,String url,String msgId){
+	public static String setData(String s){
+		return "<![CDATA["+s+"]]>";
+	}
+	
+	public static String initText(String toUserName,String fromUserName,String title,String msgType,String description,String url,long msgId){
 		LinkMessage text = new LinkMessage();
 		text.setFromUserName(toUserName);
 		text.setToUserName(fromUserName);
@@ -142,7 +146,7 @@ public class MessageUtil {
 	
 	public static String firstMenu(){
 		StringBuffer sb = new StringBuffer();
-		sb.append("微信公众号开发，主要涉及公众号介绍、编辑模式介绍、开发模式介绍等");
+		sb.append("微信公众号开发，主要涉及公众号介绍、编辑模式介绍、开发模式介绍等http://www.baidu.com");
 		return sb.toString();
 	}
 	

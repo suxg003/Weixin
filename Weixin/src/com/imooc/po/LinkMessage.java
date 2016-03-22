@@ -1,41 +1,41 @@
 package com.imooc.po;
 
 public class LinkMessage extends BaseMessage {
-	private String title;
-	private String description;
-	private String url;
-	private String msgId;
+	private String Title;
+	private String Description;
+	private String Url;
+	private long MsgId;
 
 	public String getTitle() {
-		return title;
+		return Title;
 	}
 
 	public void setTitle(String title) {
-		this.title = title;
+		Title = title;
 	}
 
 	public String getDescription() {
-		return description;
+		return Description;
 	}
 
 	public void setDescription(String description) {
-		this.description = description;
+		Description = description;
 	}
 
 	public String getUrl() {
-		return url;
+		return Url;
 	}
 
 	public void setUrl(String url) {
-		this.url = url;
+		Url = url;
 	}
 
-	public String getMsgId() {
-		return msgId;
+	public long getMsgId() {
+		return MsgId;
 	}
 
-	public void setMsgId(String msgId) {
-		this.msgId = msgId;
+	public void setMsgId(long msgId) {
+		MsgId = msgId;
 	}
 
 }
